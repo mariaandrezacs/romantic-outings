@@ -1,4 +1,4 @@
-# Programas Pra Namo
+# Programinhas Pra Gata
 
 10 programinhas românticos em HTML, CSS e JavaScript. Só abrir no navegador e clicar. Não precisa instalar nada.
 
