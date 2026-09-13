@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartinha Digital</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">💝</div>
+    <h1>Cartinha Digital</h1>
+    <p class="subtitle">Abre com carinho</p>
+
+    <button id="btn" onclick="mostrar()">Abrir Cartinha</button>
+
+    <div class="carta" id="carta" style="display: none;">
+      <p>Oi, amor,</p>
+      <p>
+        Sei que às vezes as palavras sozinhas não são suficientes,
+        então deixei esse programinha aqui pra te lembrar uma coisa bem importante:
+      </p>
+      <p style="text-align: center; font-size: 1.3rem; color: #d6336c; margin: 20px 0;">
+        <strong>Eu te amo. Hoje, amanhã e sempre.</strong>
+      </p>
+      <p>
+        Obrigado por ser você. Obrigado por existir.
+      </p>
+      <p style="text-align: right;">Com amor,<br>Eu</p>
+    </div>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    function mostrar() {
+      document.getElementById('carta').style.display = 'block';
+      document.getElementById('btn').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Forca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">🎮</div>
+    <h1>Jogo da Forca</h1>
+    <p class="subtitle">Tema: casal. Dica: é o que a gente sente.</p>
+
+    <div class="hangman" id="palavra">_ _ _ _</div>
+    <p style="color: #9d5b6e;">Tentativas restantes: <span id="tentativas">6</span></p>
+
+    <input type="text" id="letra" maxlength="1" placeholder="Digite uma letra">
+    <button onclick="jogar()">Chutar</button>
+    <button class="secondary" onclick="reiniciar()">Reiniciar</button>
+
+    <div class="result" id="mensagem"></div>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    let palavra = 'amor';
+    let digitadas = [];
+    let tentativas = 6;
+
+    function atualizar() {
+      const mostrada = palavra.split('').map(l => digitadas.includes(l) ? l : '_').join(' ');
+      document.getElementById('palavra').textContent = mostrada;
+      document.getElementById('tentativas').textContent = tentativas;
+
+      if (!mostrada.includes('_')) {
+        document.getElementById('mensagem').textContent = 'Parabéns! Você acertou!';
+        document.getElementById('letra').disabled = true;
+      } else if (tentativas === 0) {
+        document.getElementById('mensagem').textContent = `Você perdeu! A palavra era: ${palavra}`;
+        document.getElementById('letra').disabled = true;
+      }
+    }
+
+    function jogar() {
+      const input = document.getElementById('letra');
+      const letra = input.value.toLowerCase();
+      input.value = '';
+
+      if (!letra || digitadas.includes(letra)) return;
+
+      digitadas.push(letra);
+      if (!palavra.includes(letra)) {
+        tentativas--;
+      }
+      atualizar();
+    }
+
+    function reiniciar() {
+      palavra = 'amor';
+      digitadas = [];
+      tentativas = 6;
+      document.getElementById('mensagem').textContent = '';
+      document.getElementById('letra').disabled = false;
+      atualizar();
+    }
+
+    atualizar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cápsula do Tempo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">🕐</div>
+    <h1>Cápsula do Tempo</h1>
+    <p class="subtitle">Escreva uma mensagem e guarde pra abrir no futuro</p>
+
+    <textarea id="mensagem" rows="5" placeholder="Escreva aqui..."></textarea>
+    <button onclick="salvar()">Salvar Cápsula</button>
+
+    <div class="result" id="resultado"></div>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    function salvar() {
+      const texto = document.getElementById('mensagem').value;
+      if (!texto.trim()) {
+        document.getElementById('resultado').textContent = 'Escreve algo antes de salvar!';
+        return;
+      }
+
+      const hoje = new Date().toISOString().split('T')[0];
+      const conteudo = `Cápsula do Tempo - ${hoje}\n====================\n${texto}\n====================\n`;
+      const blob = new Blob([conteudo], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `capsula_${hoje}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+
+      document.getElementById('resultado').textContent = 'Cápsula salva! Guarde o arquivo com carinho.';
+    }
+  </script>
+</body>
+</html>

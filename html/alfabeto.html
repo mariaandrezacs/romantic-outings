@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alfabeto do Amor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">🔤</div>
+    <h1>Alfabeto do Amor</h1>
+    <p class="subtitle">Escolhe uma letra e descubra o significado</p>
+
+    <input type="text" id="letra" maxlength="1" placeholder="Digite uma letra (A-Z)">
+    <button onclick="ver()">Descobrir</button>
+
+    <div class="result" id="resultado"></div>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    const alfabeto = {
+      A: "Amor que só cresce",
+      B: "Beijo que acalma",
+      C: "Carinho sem fim",
+      D: "Dias felizes com você",
+      E: "Encontro que sonho",
+      F: "Felicidade em você",
+      G: "Gratidão por ter você",
+      H: "Humor que me contagia",
+      I: "Infinito é pouco",
+      J: "Juntos em tudo",
+      L: "Luz da minha vida",
+      M: "Meu mundo é você",
+      N: "Nossa história linda",
+      O: "Olhar que me derrete",
+      P: "Parte de mim",
+      Q: "Quero você sempre",
+      R: "Risada que amo",
+      S: "Sonho realizado",
+      T: "Te amo demais",
+      U: "Única pra mim",
+      V: "Vida ao seu lado",
+      X: "Xodó do meu coração",
+      Z: "Zelo e cuidado"
+    };
+
+    function ver() {
+      const letra = document.getElementById('letra').value.toUpperCase();
+      const res = document.getElementById('resultado');
+      if (alfabeto[letra]) {
+        res.textContent = `${letra} é: ${alfabeto[letra]}`;
+      } else {
+        res.textContent = "Ainda não sei... mas com certeza tem a ver com você.";
+      }
+    }
+
+    document.getElementById('letra').addEventListener('keypress', e => {
+      if (e.key === 'Enter') ver();
+    });
+  </script>
+</body>
+</html>

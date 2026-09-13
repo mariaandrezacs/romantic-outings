@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz do Casal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">❓</div>
+    <h1>Quiz: Quem é Mais...</h1>
+    <p class="subtitle">Responda com sinceridade e se divirta</p>
+
+    <div class="card" id="pergunta-card" style="display: none;">
+      <p id="pergunta" style="font-size: 1.2rem; margin-bottom: 16px;"></p>
+      <div class="quiz-opcoes">
+        <button onclick="responder('eu')">Eu</button>
+        <button onclick="responder('ela')" class="secondary">Ela</button>
+      </div>
+    </div>
+
+    <button id="iniciar" onclick="iniciar()">Iniciar Quiz</button>
+    <div class="result" id="resultado"></div>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    const perguntas = [
+      "Quem é mais provável de dormir tarde?",
+      "Quem é mais bagunceiro?",
+      "Quem fala 'te amo' primeiro?",
+      "Quem escolhe o filme?",
+      "Quem é mais ciumento?"
+    ];
+
+    let idx = 0;
+    let eu = 0;
+    let ela = 0;
+
+    function iniciar() {
+      idx = 0;
+      eu = 0;
+      ela = 0;
+      document.getElementById('iniciar').style.display = 'none';
+      document.getElementById('pergunta-card').style.display = 'block';
+      document.getElementById('resultado').textContent = '';
+      mostrar();
+    }
+
+    function mostrar() {
+      if (idx < perguntas.length) {
+        document.getElementById('pergunta').textContent = perguntas[idx];
+      } else {
+        document.getElementById('pergunta-card').style.display = 'none';
+        document.getElementById('iniciar').style.display = 'inline-block';
+        document.getElementById('iniciar').textContent = 'Jogar de Novo';
+        document.getElementById('resultado').textContent = `Resultado: ${eu}x 'eu' / ${ela}x 'ela' — Obrigado por brincar comigo!`;
+      }
+    }
+
+    function responder(quem) {
+      if (quem === 'eu') eu++;
+      else ela++;
+      idx++;
+      mostrar();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motivos que Amo Você</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">💌</div>
+    <h1>Motivos que Amo Você</h1>
+    <p class="subtitle">10 motivos aleatórios pra te fazer sorrir</p>
+
+    <button onclick="gerar()">Gerar Motivos</button>
+
+    <ul class="lista" id="lista"></ul>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    const motivos = [
+      "porque você me faz rir sem fazer nada",
+      "porque seu sorriso é o melhor do dia",
+      "porque você é a pessoa mais gentil que conheço",
+      "porque com você qualquer lugar é bom",
+      "porque você me apoia em tudo",
+      "porque sua voz acalma meu coração",
+      "porque você é linda por dentro e por fora",
+      "porque você é o melhor presente que a vida me deu",
+      "porque eu sou muito mais feliz ao seu lado",
+      "porque você é simplesmente incrível",
+      "porque seu abraço é o melhor lugar do mundo",
+      "porque você me faz querer ser melhor"
+    ];
+
+    function gerar() {
+      const escolhidos = [];
+      const copia = [...motivos];
+      for (let i = 0; i < 10 && copia.length > 0; i++) {
+        const idx = Math.floor(Math.random() * copia.length);
+        escolhidos.push(copia.splice(idx, 1)[0]);
+      }
+
+      const lista = document.getElementById('lista');
+      lista.innerHTML = '';
+      escolhidos.forEach(m => {
+        const li = document.createElement('li');
+        li.textContent = m;
+        lista.appendChild(li);
+      });
+    }
+
+    gerar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surpresa do Dia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">🎁</div>
+    <h1>Surpresa do Dia</h1>
+    <p class="subtitle">Clique e descubra o que te espera</p>
+
+    <button onclick="surpreender()">Abrir Surpresa</button>
+    <div class="result" id="resultado" style="font-size: 1.3rem; margin-top: 20px;"></div>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    const surpresas = [
+      "Hoje o café/chá é por minha conta",
+      "Vou te mandar uma foto que ninguém viu ainda",
+      "Preparei uma playlist com músicas que me lembram você",
+      "Vou te dar um abraço de 30 segundos",
+      "Hoje eu escolho o filme e você escolhe a comida",
+      "Vou te mandar 3 coisas que amo em você agora",
+      "Dia de pedir qualquer delivery juntos",
+      "Hoje soube que você é a melhor parte do meu dia",
+      "Vou te contar uma lembrança feliz nossa",
+      "Surpresa: eu te amo muito"
+    ];
+
+    function surpreender() {
+      const sorte = surpresas[Math.floor(Math.random() * surpresas.length)];
+      document.getElementById('resultado').textContent = sorte;
+    }
+  </script>
+</body>
+</html>

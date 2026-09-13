@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Namoro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">❤️</div>
+    <h1>Contador de Namoro</h1>
+    <p class="subtitle">Quanto tempo a gente está junto?</p>
+
+    <div class="card">
+      <label for="data">Data que começamos:</label>
+      <input type="date" id="data" value="2024-06-15">
+      <button onclick="calcular()">Atualizar</button>
+    </div>
+
+    <div class="card">
+      <p>Juntos há</p>
+      <div class="big-number" id="dias">0</div>
+      <p>dias</p>
+      <p id="detalhe" style="margin-top: 10px; color: #9d5b6e;"></p>
+    </div>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    function calcular() {
+      const inicio = new Date(document.getElementById('data').value);
+      const hoje = new Date();
+      const diff = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24));
+      const anos = Math.floor(diff / 365);
+      const meses = Math.floor((diff % 365) / 30);
+
+      document.getElementById('dias').textContent = diff;
+      document.getElementById('detalhe').textContent = `Isso dá cerca de ${anos} ano(s) e ${meses} mês(es)`;
+    }
+
+    calcular();
+  </script>
+</body>
+</html>

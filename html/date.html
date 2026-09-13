@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteador de Date</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heart">🎲</div>
+    <h1>Sorteador de Date</h1>
+    <p class="subtitle">O que a gente vai fazer hoje?</p>
+
+    <div class="card">
+      <div class="result" id="resultado">Clique no botão!</div>
+      <button onclick="sortear()">Sortear Encontro</button>
+    </div>
+
+    <a href="index.html" class="voltar">← Voltar</a>
+  </div>
+
+  <script>
+    const encontros = [
+      "Filminho em casa com pipoca",
+      "Piquenique no parque",
+      "Jantar em um restaurante novo",
+      "Noite de jogos de tabuleiro",
+      "Cozinhar juntos uma receita nova",
+      "Passeio de mãos dadas no shopping",
+      "Sessão de fotos juntos",
+      "Viagem de um dia pra um lugar novo",
+      "Aula de dança em casa",
+      "Dia de spa caseiro",
+      "Pôr do sol num lugar bonito",
+      "Maratona de série favorita"
+    ];
+
+    function sortear() {
+      const sorte = encontros[Math.floor(Math.random() * encontros.length)];
+      document.getElementById('resultado').textContent = sorte;
+    }
+  </script>
+</body>
+</html>
